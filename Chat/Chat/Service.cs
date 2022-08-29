@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.ServiceModel;
 
@@ -10,6 +11,7 @@ namespace Chat
     {
         List<ServerUser> users = new List<ServerUser>();
         int nextID = -1;
+        String path = "..\\Test.txt";
         public int Connect(string name)
         {
             ServerUser user = new ServerUser()
@@ -33,6 +35,7 @@ namespace Chat
                 SendMsg(": " + user.Name + " покинул чат!", 0);
             }
         }
+       
 
         public void SendMsg(string msg, int id)
         {
@@ -42,12 +45,21 @@ namespace Chat
                 var user = users.FirstOrDefault(i => i.ID == id);
                 if (user != null)
                 {
-                    answer += ": " + user.Name + " ";
+                    answer += ": " + user.Name + "- ";
                 }
                 answer += msg;
 
                 item.operationContext.GetCallbackChannel<IServerCallback>().MsgCallback(answer);
             }
+        }
+
+        public Stream Download(string File)
+        {
+            throw new NotImplementedException();
+        }
+        public string Upload(Stream input)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -54,6 +54,10 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ChatClient\ChatClient.csproj">
+      <Project>{ac347198-e3ca-4ab7-89ce-1b91d192497c}</Project>
+      <Name>ChatClient</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Chat\Chat.csproj">
       <Project>{d6a884e9-29d9-4242-93be-df5e304de42b}</Project>
       <Name>Chat</Name>

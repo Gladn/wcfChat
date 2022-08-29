@@ -1,4 +1,6 @@
 ﻿using System.ServiceModel;
+using System.IO;
+using System;
 
 namespace Chat
 {
@@ -14,6 +16,12 @@ namespace Chat
 
         [OperationContract(IsOneWay = true)]
         void SendMsg(string msg, int id);
+
+        [OperationContract]
+        string Upload(Stream input);
+
+        [OperationContract]
+        Stream Download(String File);
     }
 
     public interface IServerCallback
