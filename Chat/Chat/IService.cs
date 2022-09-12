@@ -18,10 +18,17 @@ namespace Chat
         void SendMsg(string msg, int id);
 
         [OperationContract]
-        string Upload(Stream input);
+        Stream GetFile(string virtualPath);
 
         [OperationContract]
-        Stream Download(String File);
+        void PutFile(FileUploadMessage msg);
+
+        [OperationContract]
+        void DeleteFile(string virtualPath);
+
+        [OperationContract]
+        StorageFileInfo[] List(string virtualPath);
+
     }
 
     public interface IServerCallback
@@ -29,4 +36,7 @@ namespace Chat
         [OperationContract(IsOneWay = true)]
         void MsgCallback(string msg);
     }
+
+    
+
 }
